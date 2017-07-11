@@ -128,5 +128,6 @@
     <include id="incServicesDialog" src="/include/dialog/servicesDialog.zul"/>
     <include id="incAddNextServiceDialog" src="/include/dialog/addNextServiceDialog.zul"/>
     <include id="incChangeServiceDialog" src="/include/dialog/changeServiceDialog.zul"/>
+    <include id="incServeCustomerDialog" src="/include/dialog/serveCustomerDialog.zul"/>
 
 </zk>

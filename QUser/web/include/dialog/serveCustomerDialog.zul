@@ -1,9 +1,49 @@
-<window id="serveCustomerDialog" title="Serve Customer Screen" border="normal" width="920px"
-    apply="demo.window.modal_dialog.EmployeeDialogController"
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <style>
+        .text-style{
+            font-size : 26px; 
+            font-family: Helvetica; 
+            color: White;
+        }
+    </style>
+
+<window id="serveCustomerDialog" title="Serve Customer Screen" border="normal" width="920px" height="800px"
     position="center,center" closable="true"
+    onClose="self.visible = false; event.stopPropagation();"
     action="show: slideDown;hide: slideUp">
-    <vlayout>
-        <grid>
+    <vlayout sclass="blue-background" height="192px">
+        
+        <hbox>
+            <vbox style="margin-left: 26px; margin-top: 34px;">
+                <label id="customer_number_label" value="Ticket #" sclass="text-style" style="font-weight: bold;"/>
+                <label id="customer_number" value="28" sclass="text-style" style="font-style: oblique;"/>
+            </vbox>
+        
+            <hbox style="margin-left: 18px; margin-top: 34px;">
+                
+                <label id="comments_label" value="Comments:" sclass="text-style" style="margin-left: 30px; font-weight: bold;"/>
+
+                <textbox rows="5" cols="60" style="margin-left: 16px;">
+                    <attribute name="value">This client has already made complaints 10 times.
+                    </attribute>
+                </textbox>
+            </hbox> 
+        </hbox>
+            
+            
+            <hbox>
+                <button sclass="act-button" style="margin-left: 22px; margin-top: 22px;" label="${c:l('begin')}" disabled="@load(fmodel.btnsDisabled[2])" onClick="@command('begin')" id="btn_start" height="38px" width="158px">
+                </button>
+
+                <button sclass="act-button" style="margin-left: 15px; margin-top: 22px;" label="Citizen Left" disabled="@load(fmodel.btnsDisabled[1])" onClick="@command('kill')" id="btn_kill" height="38px" width="158px">
+                </button>            
+                <!--<checkbox style="margin-top: 18px;" id="inaccurateTimeCheckBox" label=" Inaccurate Time" />-->
+            </hbox>
+
+        
+<!--        <grid>
             <columns>
                 <column hflex="1" label="Name" />
                 <column hflex="2" label="Coffee Type" align="center" />
@@ -26,9 +66,8 @@
                     <label value="6" />
                 </row>
             </rows>
-        </grid>
-<!--
-        <button id="closeBtn" hflex="1" label="close" onClick="redirectDialog.visible = false; event.stopPropagation();"/>
--->
+        </grid>-->
+        <!--<button id="closeServeCustomerDialogBtn" hflex="1" label="close" onClick="serveCustomerDialog.visible = false; event.stopPropagation();"/>-->
     </vlayout>
 </window>
+</zk>

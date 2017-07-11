@@ -25,7 +25,7 @@
         border-color: #FFFF00;
         }
         .blue-background {
-        background-color: #0099ff;
+        background-color: #003366;
         }
         .toolbar-items {
         color:white;
@@ -38,7 +38,7 @@
  
     <borderlayout  sclass="complex-layout" validationMessages="@id('login_msgs')" apply="org.zkoss.bind.BindComposer"  viewModel="@id('fmodel') @init('ru.apertum.qsys.quser.Form')">
         
-        <north size="180px" border="0" style="background-color: #003366;">
+        <north size="180px" border="0" sclass="blue-background">
             <vbox height="100%" pack="center">
                 <image src="/resources/img/bc_logo_resized.png" width="204px"  height="56px" style=" margin-top: 24px;"/>
                     

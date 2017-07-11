@@ -348,6 +348,9 @@ public class Form {
     @Command
     @NotifyChange(value = {"btnsDisabled", "customer", "avaitColumn"})
     public void invite() {
+        serveCustomerDialogWindow.setVisible(true);
+        serveCustomerDialogWindow.doModal();
+        /*
         QLog.l().logQUser().debug("Invite by " + user.getName());
         final CmdParams params = new CmdParams();
         params.userId = user.getUser().getId();
@@ -365,6 +368,7 @@ public class Form {
             Messagebox.show(l("no_clients"), l("inviting_next"), Messagebox.OK, Messagebox.INFORMATION);
         }
         service_list.setModel(service_list.getModel());
+        */
     }
 
     @Command
@@ -693,6 +697,8 @@ public class Form {
     @Wire("#incClientDashboard #incChangeServiceDialog #changeServiceDialog")
     Window changeServiceDialogWindow;
     
+    @Wire("#incClientDashboard #incServeCustomerDialog #serveCustomerDialog")
+    Window serveCustomerDialogWindow;
 
     @Command
     public void closeAddNextServiceDialog(){
