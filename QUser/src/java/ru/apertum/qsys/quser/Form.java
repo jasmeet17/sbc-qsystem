@@ -362,6 +362,8 @@ public class Form {
                         + " \"" + customer.getPostponedStatus() + "\".", l("inviting_postponed"), Messagebox.OK, Messagebox.INFORMATION);
             }
             setKeyRegim(KEYS_INVITED);
+            BindUtils.postNotifyChange(null, null, Form.this, "*");
+            this.addServeScreen();
         } else {
             Messagebox.show(l("no_clients"), l("inviting_next"), Messagebox.OK, Messagebox.INFORMATION);
         }
@@ -370,9 +372,7 @@ public class Form {
     }
     
     @Command
-    public void addWindowScreen() {
-        QCustomer c = new QCustomer();
-        
+    public void addServeScreen() {
         serveCustomerDialogWindow.setVisible(true);
         serveCustomerDialogWindow.doModal();
     }
@@ -394,6 +394,8 @@ public class Form {
                     service_list.setModel(service_list.getModel());
                     
                     BindUtils.postNotifyChange(null, null, Form.this, "*");
+                    serveCustomerDialogWindow.setVisible(false);
+
                 }
          });
     }
@@ -422,6 +424,7 @@ public class Form {
         QLog.l().logQUser().debug("Redirect by " + user.getName() + " customer " + customer.getFullNumber());
         redirectCustomerDialog.setVisible(true);
         redirectCustomerDialog.doModal();
+        serveCustomerDialogWindow.setVisible(false);
     }
     
     @Command
@@ -453,6 +456,9 @@ public class Form {
         customer = null;
         setKeyRegim(KEYS_MAY_INVITE);
         service_list.setModel(service_list.getModel());
+        BindUtils.postNotifyChange(null, null, Form.this, "*");
+        serveCustomerDialogWindow.setVisible(false);
+
     }
 
     //********************************************************************************************************************************************
@@ -523,6 +529,7 @@ public class Form {
 
         setKeyRegim(KEYS_INVITED);
         BindUtils.postNotifyChange(null, null, Form.this, "*");
+        this.addServeScreen();
     }
 
     public LinkedList<String> prior_St = new LinkedList(Uses.get_COEFF_WORD().values());
@@ -593,6 +600,9 @@ public class Form {
     @Command
     public void closePostponeCustomerDialog() {
         postponeCustomerDialog.setVisible(false);
+        BindUtils.postNotifyChange(null, null, Form.this, "*");
+        serveCustomerDialogWindow.setVisible(false);
+
     }
 
     @Command
@@ -608,6 +618,9 @@ public class Form {
         setKeyRegim(KEYS_MAY_INVITE);
         service_list.setModel(service_list.getModel());
         postponeCustomerDialog.setVisible(false);
+        BindUtils.postNotifyChange(null, null, Form.this, "*");
+        servicesDialogWindow.setVisible(false);
+        
     }
 
     private final LinkedList<QCustomer> postponList = QPostponedList.getInstance().getPostponedCustomers();
